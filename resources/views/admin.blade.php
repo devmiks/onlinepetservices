@@ -17,7 +17,7 @@
             @if((Auth::user()->fname == null) && (Auth::user()->lname == null))
                 <div class="card-header">Complete Profile Register</div>
             @else
-                <div class="card-header">Profile List</div>
+                <div class="card-header">PROFILE VIEW AND SERVICES</div>
             @endif
                 <div class="card-body">
                 @if((Auth::user()->fname == null) && (Auth::user()->lname == null))                    

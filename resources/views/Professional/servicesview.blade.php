@@ -1,11 +1,26 @@
 <div class="col-md-6">
     <div class="card">
         <div class="card-header ">
-            <span class="d-flex align-items-start">SERVICES</span>  
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#serviceform">
-            ADD NEW SERVICE
-            </button>
+            <span class="d-flex align-items-start">YOUR SERVICES</span>
         </div> 
+
+            <form method="post" action="" >
+                <select class="form-control" id="selectUser" name="user_selected" required focus>
+                    <option value="" disabled selected>Please Select Service</option>        
+                    @foreach($ListServices as $lst)
+                    <option value="{{$lst->services_name}}">{{ $lst->services_name }}</option>
+                    @endforeach
+                </select>
+                <br />
+                <button type="submit" class="btn btn-danger" data-toggle="modal" onclick="return confirm('Are you sure you want to add this services?')">
+                    ADD NEW SERVICE
+                </button>                   
+            </form>
+                <br />
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newserviceform">
+                    CREATE NEW SERVICE
+                </button>
+                @include('Professional.modal.createnewservices')        
         <div class="card-body">
             <div class="d-flex flex-row bd-highlight mb-3">
                 <table class="table">
@@ -17,8 +32,7 @@
                         <th scope="col" colspan="2">Action</th>            
                         </tr>
                     </thead>
-                    <tbody>    
-                    <!--                
+                    <tbody>                    
                     @forelse($Service as $i => $Services)
                         <tr>
                             <td>{{ $i+1 }}</td>
@@ -26,12 +40,12 @@
                             <td>{{ $Services->rate_price }}</td>
                             <td colspan="2" class="d-inline-flex">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editformServices-{{ $Services->id }}" onclick="return confirm('Are you sure you want to edit this profile?')">
-                                EDIT
-                                </button> 
-                                @include('services.edit-modal')
-                                || 
+                                    EDIT
+                                </button>
                                 <br />                                
-                                <a href="{{ route('deleteService', ['id' => $Services->id, 'ProfileID' => $Profile->id]) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this profile?')">Delete</a>                                                        
+                                <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this profile?')">
+                                    Delete
+                                </button>                                                              
                             </td>
                         </tr>
                     @empty
@@ -39,12 +53,9 @@
                             <td colspan="5" style="align:center;"><h4>NO SERVICES ON LIST</h4></td>
                         </tr>
                     @endforelse
-                    -->
                     </tbody>
                 </table>
             </div>
         </div> <!-- End Card Body -->
     </div> <!-- End Card -->
-
 </div> <!-- end of col-md-6 -->
-<!--@include('services.register-modal')-->

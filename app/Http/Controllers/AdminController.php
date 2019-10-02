@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
+use App\service;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $Service = service::Where('id', Auth::user()->id);
+        $ListServices = service::distinct()->get(['services_name']);
+        return view('admin', compact('Service', 'ListServices'));
     }
 
     /**
