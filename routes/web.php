@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Regular&Page', 'HomeController@index')->name('home');
+
 /*
 // Authentication Routes... Modified Default
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
@@ -36,11 +37,14 @@ Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register
 */
 
 // Admin Route
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::put('/admin/update&profile', 'AdminController@update')->name('update-profile');
+Route::get('/Professional&Page', 'AdminController@index')->name('admin');
+Route::put('/Professional&Page/update&profile', 'AdminController@update')->name('update-profile');
 
 // Service Route
-Route::post('/admin/create_service', 'ServiceController@store')->name('createnewservice');
+Route::post('/Professional&Page/create_service/save_new', 'ServiceController@store')->name('createnewservice1');
+
+Route::post('/Professional&Page/create_service/save_service', 'ServiceController@addnewservice')->name('addprofileservice1');
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\service;
+use App\Listservice;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -37,14 +38,27 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $Services = new service();
-
-        $Services->userid = $request->input('id');
-        $Services->services_name = $request->input('frmServiceName');
-        $Services->rate_price = $request->input('frmServiceRate');
-
+        $Services = new Listservice();
+        $Services->ServiceName = $request->input('frmServiceName');
         $Services->save();
-        return redirect()->action('AdminController@index');
+        return redirect()->route('admin');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addnewservice(Request $request)
+    {
+        $Service = new service();
+        $Service->userid = $request->input('user_id');
+        $Service->services_name = $request->input('selectUser');
+        $Service->rate_price = $request->input('servicesrateprice');
+
+        $Service->save();
+        return redirect()->route('admin');
     }
 
     /**

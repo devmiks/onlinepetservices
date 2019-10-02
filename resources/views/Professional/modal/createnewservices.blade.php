@@ -10,10 +10,9 @@
       </div>
       <div class="modal-body">
 
-      <form method="POST" action="{{ route('createnewservice') }}" >
+      <form method="POST" action="{{ route('createnewservice1') }}" >
         @csrf
         
-        <input type="hidden" name="id" value="{{ Auth::user()->id }}" />
         <div class="form-group row">
             <label for="frmServiceName" class="col-md-4 col-form-label text-md-right">{{ __('SERVICE NAME') }}</label>
 
@@ -21,18 +20,6 @@
                 <input id="frmServiceName" type="text" class="form-control @error('frmServiceName') is-invalid @enderror" name="frmServiceName" required autocomplete="frmServiceName" autofocus>
 
                 @error('frmServiceName')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <br /><br />
-            <label for="frmServiceRate" class="col-md-4 col-form-label text-md-right">{{ __('RATE / PRICE') }}</label>
-
-            <div class="col-md-6">
-                <input id="frmServiceRate" type="text" class="form-control @error('frmServiceRate') is-invalid @enderror" name="frmServiceRate" required autocomplete="frmServiceRate" autofocus>
-
-                @error('frmServiceRate')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

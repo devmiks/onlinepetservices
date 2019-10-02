@@ -4,14 +4,30 @@
             <span class="d-flex align-items-start">YOUR SERVICES</span>
         </div> 
 
-            <form method="post" action="" >
-                <select class="form-control" id="selectUser" name="user_selected" required focus>
-                    <option value="" disabled selected>Please Select Service</option>        
+            <form method="POST" action="{{ route('addprofileservice1') }}" >
+                @csrf
+                
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+                <select name="selectUser" class="form-control text-md-right" required focus>
+                        <option value="none" disabled selected>Please Select Service</option>        
                     @foreach($ListServices as $lst)
-                    <option value="{{$lst->services_name}}">{{ $lst->services_name }}</option>
+                        <option value="{{$lst->ServiceName}}">{{ $lst->ServiceName }}</option>
                     @endforeach
                 </select>
                 <br />
+                <div class="form-group row">
+                    <label for="servicesrateprice" class="col-md-4 col-form-label text-md-right">{{ __('RATE / PRICE') }}</label>
+                    
+                    <div class="col-md-6">
+                        <input id="servicesrateprice" name="servicesrateprice" type="number" min="0.01" step="0.01" maxlength="6" value="25.67" class="form-control @error('servicesrateprice') is-invalid @enderror" required autocomplete="servicesrateprice" autofocus>
+                        @error('servicesrateprice')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <br /><br />
+                </div>
                 <button type="submit" class="btn btn-danger" data-toggle="modal" onclick="return confirm('Are you sure you want to add this services?')">
                     ADD NEW SERVICE
                 </button>                   
@@ -33,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>                    
-                    @forelse($Service as $i => $Services)
+                    @forelse($Service1 as $i => $Services)
                         <tr>
                             <td>{{ $i+1 }}</td>
                             <td>{{ $Services->services_name }}</td>
@@ -54,8 +70,9 @@
                         </tr>
                     @endforelse
                     </tbody>
-                </table>
+                </table>          
             </div>
+            {!! $Service1->links() !!}
         </div> <!-- End Card Body -->
     </div> <!-- End Card -->
 </div> <!-- end of col-md-6 -->

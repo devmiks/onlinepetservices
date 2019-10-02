@@ -30,9 +30,9 @@ class ResetPasswordController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ( $request->email != null && $user->user_type > 0 ) {
-            return redirect('home', $user->id);
+            return redirect()->route('home');
         }
-        return redirect()->route('admin', $user->id);        
+        return redirect()->route('admin');        
     }
 
     /**

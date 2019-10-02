@@ -32,9 +32,9 @@ class RegisterController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ( $request->email != null && $user->user_type > 0 ) {
-            return redirect('admin');              
+            return redirect()->route('admin');              
         }else {
-            return redirect('home');  
+            return redirect()->route('home');  
         }        
     }
 
