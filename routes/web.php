@@ -39,7 +39,8 @@ Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::put('/admin/update&profile', 'AdminController@update')->name('update-profile');
 
-
+// Service Route
+Route::post('/admin/create_service', 'ServiceController@store')->name('createnewservice');
 
 
 

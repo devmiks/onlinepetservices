@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\service;
 use Illuminate\Http\Request;
@@ -36,7 +37,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Services = new service();
+
+        $Services->userid = $request->input('id');
+        $Services->services_name = $request->input('frmServiceName');
+        $Services->rate_price = $request->input('frmServiceRate');
+
+        $Services->save();
+        return redirect()->action('AdminController@index');
     }
 
     /**

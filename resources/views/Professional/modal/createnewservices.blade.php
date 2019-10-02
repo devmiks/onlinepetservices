@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
 
-      <form method="POST" action="" >
+      <form method="POST" action="{{ route('createnewservice') }}" >
         @csrf
         
         <input type="hidden" name="id" value="{{ Auth::user()->id }}" />
