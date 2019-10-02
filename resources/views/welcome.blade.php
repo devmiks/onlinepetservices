@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    ONLINE PET SERVICES
                 </div>
 
                 <div class="links">

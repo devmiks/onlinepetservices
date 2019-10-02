@@ -37,7 +37,8 @@ Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register
 
 // Admin Route
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::put('/admin/update&profile', 'AdminController@update')->name('update');
+Route::put('/admin/update&profile', 'AdminController@update')->name('update-profile');
+
 
 
 

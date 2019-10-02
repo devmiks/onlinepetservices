@@ -20,9 +20,10 @@
                     </label>
                 </div>
             </div>
-            <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#editformServices-{{ Auth::user()->id }}">VIEW FULL PROFILE</a>             
-            <a href="{{ route('admin') }}" class="btn btn-primary">EDIT PROFILE</a> 
+            <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#viewprofileformServices-{{ Auth::user()->id }}"><i class="far fa-user"></i>VIEW FULL PROFILE</a>             
+            <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#editformServices-{{ Auth::user()->id }}">EDIT PROFILE</a> 
         </div> <!-- End Card Body -->
     </div> <!-- End Card -->
 </div> <!-- End Col-md-6 -->
 @include('Professional.modal.viewfullprofile-modal')
+@include('Professional.modal.editprofile-modal')

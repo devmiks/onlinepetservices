@@ -1,29 +1,42 @@
 <!-- MODAL FORM -->
-<div class="modal fade" id="editformServices-{{ Auth::user()->id }}" tabindex="-1" role="dialog" aria-labelledby="editformServices-{{ Auth::user()->id }}Label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-profile-modal-sm" id="viewprofileformServices-{{ Auth::user()->id }}" tabindex="-1" role="dialog" aria-labelledby="viewprofileformServices-{{ Auth::user()->id }}Label" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editformServices-{{ Auth::user()->id }}Label">EDIT SERVICE</h5>
+        <h5 class="modal-title" id="viewprofileformServices-{{ Auth::user()->id }}Label">VIEW FULL PROFILE</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
           <div class="form-group row">
-          
-            <label for="frmServiceName" class="col-md-4 col-form-label text-md-right">{{ __('SERVICE NAME') }}</label>
+            <div class="card text-center">
 
-            <div class="col-md-6">
-                <input id="frmServiceName" type="text" class="form-control @error('frmServiceName') is-invalid @enderror" name="frmServiceName" value="{{ Auth::user()->fname }}" required autocomplete="frmServiceName" autofocus>
-
-                @error('frmServiceName')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>              
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              <div class="card-header">
+                <img src="{{ asset('uploads/employee/' . Auth::user()->image1) }}" alt="Image" height="140px" width="140px" class="rounded-circle">
               </div>
+
+              <div class="card-body d-block p-2">
+                  <label class="text-uppercase ">
+                    FULL NAME: <span class="text-muted font-weight-bold">[ {{ Auth::user()->fname . " " . Auth::user()->mname . " " . Auth::user()->lname }} ]</span>
+                  </label>
+                  <label>
+                    @if(Auth::user()->user_type > 0)
+                      ACCOUNT TYPE: <span class="text-muted font-weight-bold">[ Professional ]</span>
+                    @else
+                      ACCOUNT TYPE: <span class="text-muted font-weight-bold">[ Regular ]</span>
+                    @endif 
+                  </label>
+                  <label>
+                    ADDRESS: <span class="text-muted font-weight-bold">[ {{ Auth::user()->homeaddress }} ]</span>
+                  </label>
+                  <label>
+                    MOBILE NUMBER: <span class="text-muted font-weight-bold">[ {{ Auth::user()->mobilenum }} ]</span>
+                  </label>                  
+              </div>              
+              
+              <button type="button" class="btn btn-secondary active" data-dismiss="modal">CLOSE</button>              
+            </div>
           </div>      
       </div> <!-- End of modal-body -->
     </div> <!-- End of modal-content -->
