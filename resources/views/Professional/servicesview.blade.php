@@ -55,13 +55,16 @@
                             <td>{{ $Services->services_name }}</td>
                             <td>{{ $Services->rate_price }}</td>
                             <td colspan="2" class="d-inline-flex">
+
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editformServices-{{ $Services->id }}" onclick="return confirm('Are you sure you want to edit this profile?')">
                                     EDIT
                                 </button>
+                                @include('Professional.modal.editservices')
                                 <br />                                
-                                <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this profile?')">
+                                <a href="{{ route('deleteService1', $Services->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this profile?')">
                                     Delete
-                                </button>                                                              
+                                </a> 
+                                                                                             
                             </td>
                         </tr>
                     @empty

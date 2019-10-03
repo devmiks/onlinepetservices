@@ -90,9 +90,14 @@ class ServiceController extends Controller
      * @param  \App\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, service $service)
+    public function update(service $service)
     {
-        //
+        $Services = service::findorFail($service->id);
+        $Service->services_name = $service->input('inputServiceName');
+        $Service->rate_price = $service->input('inputServiceRate');
+
+        $Service->save();
+        return redirect()->route('admin');
     }
 
     /**
@@ -104,5 +109,13 @@ class ServiceController extends Controller
     public function destroy(service $service)
     {
         //
+    }
+    
+    public function delete($id) 
+    {
+        $Service = service::findorFail($id);
+        $Service->delete($id);
+        
+        return redirect()->route('admin');
     }
 }
