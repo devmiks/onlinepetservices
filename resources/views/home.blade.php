@@ -22,7 +22,7 @@
                 <div class="card-body">
                 @if((Auth::user()->fname == null) && (Auth::user()->lname == null)) 
 
-                @include_once(Regular.registerform1)
+                @include('Regular.registerform1')
 
                 @else
                     @if (session('status'))

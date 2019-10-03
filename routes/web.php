@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Regular Route
 Route::get('/RegularPage', 'HomeController@index')->name('home');
+Route::put('/RegularPage/update&profile', 'HomeController@update')->name('update-REGprofile');
 
 // Admin Route
 Route::get('/ProfessionalPage', 'AdminController@index')->name('admin');

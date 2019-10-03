@@ -1,7 +1,8 @@
 <div class="card-body">
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('update-REGprofile') }}" enctype="multipart/form-data">
         @csrf
         
+        <input type="hidden" name="_method" value="put">
         <input type="hidden" name="id" value="{{ Auth::user()->id }}" />
         <div class="form-group row">
             <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
