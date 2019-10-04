@@ -25,16 +25,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        /*
-            $Service1 = service::where('userid', Auth::user()->id)->paginate(3);
-            $ListServices = listservice::all();
-            return view('admin', compact('Service1', 'ListServices'))
-                ->with('i', (request()->input('page', 1) -1) * 4);
-        */
-
-        return view('home');
+        $ListServices = listservice::all();        
+        
+        if(!empty($request->input('selectUser'))) 
+        {
+            $NameSearch = $request->input('selectUser');
+            $ServiceTable = service::where('services_name', $NameSearch)->first();
+            $Profiles = user::all();
+            
+            return view('home', compact('ListServices', 'ServiceTable', 'Profiles'));
+        }
+        
+        return view('home', compact('ListServices'));
     }
 
     public function update(Request $request)
@@ -77,7 +81,10 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    
+    public function searchprofile(Request $search) 
+    {        
+        
+    }
 
 
 }

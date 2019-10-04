@@ -11,7 +11,7 @@
       <div class="modal-body">
 
       <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
-        @csrf
+        @csrf        
         
         <input type="hidden" name="_method" value="put">
         <input type="hidden" name="id" value="{{ Auth::user()->id }}" />
@@ -85,12 +85,12 @@
             <label for="Account" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>
 
             <div class="col-md-6">
-                @if(Auth::user()->user_type > 0)
+                @if(Auth::user()->user_type == 0)
                     <h4>Regular</h4>    
-                    <input type="hidden" name="typeAcc" value="1">                        
+                    <input type="hidden" name="typeAcc" value="0">                        
                 @else                                    
                     <h4>Professional</h4>
-                    <input type="hidden" name="typeAcc" value="0">
+                    <input type="hidden" name="typeAcc" value="1">
                 @endif
             </div>
         </div>
