@@ -31,7 +31,7 @@
 
                     <h4>Welcome <span class="text-muted">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> !</h4>
 
-                    @include('displayform')
+                    @include('Professional.displayform')
                 @endif
 
                 </div>

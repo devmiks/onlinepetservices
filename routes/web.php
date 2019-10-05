@@ -18,16 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 // Regular Route
-Route::get('/RegularPage', 'HomeController@index')->name('home1');
+Route::get('/RegularPage', 'HomeController@index')->name('home');
 Route::put('/RegularPage/update&profile', 'HomeController@update')->name('update-REGprofile');
-
-Route::post('/RegularPage', 'HomeController@index')->name('getprofiles');
 
 // Admin Route
 Route::get('/ProfessionalPage', 'AdminController@index')->name('admin');
-Route::put('/updateprofile', 'AdminController@update')->name('update-profile');
+Route::put('/ProfessionalPage/update&profile', 'AdminController@update')->name('update-profile');
 
-// Admin Service Route
+// Service Route
 Route::post('/ProfessionalPage/create_service/save_new', 'ServiceController@store')->name('createnewservice1');
 Route::post('/ProfessionalPage/create_service/save_service', 'ServiceController@addnewservice')->name('addprofileservice1');
 

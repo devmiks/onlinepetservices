@@ -110,13 +110,7 @@ class AdminController extends Controller
 
         $Profile->save();
 
-        if(Auth::user()->userid == 0)
-        {
-            $path = "home1";
-        }
-        else{ $path = "admin"; }
-
-        return redirect()->route($path);
+        return redirect()->route('admin');
     }
 
     /**

@@ -32,7 +32,7 @@ class VerificationController extends Controller
         if ( $request->email != null && $user->user_type > 0 ) {
             return redirect()->route('admin');              
         }else {
-            return redirect()->route('home1');  
+            return redirect()->route('home');  
         }        
     }
 
