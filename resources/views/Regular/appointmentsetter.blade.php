@@ -20,8 +20,11 @@
                     SEARCH
                 </button> 
             </form>
-            </div>
+            </div><!-- end of Div -->
+
         </div> <!-- End Card Body -->
+
+
 
 
         <div class="card-header ">       
