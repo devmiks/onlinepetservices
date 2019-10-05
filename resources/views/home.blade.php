@@ -11,7 +11,7 @@
 
 @else
 <div class="container">
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-lg-12">
             <div class="card">
             @if((Auth::user()->fname == null) && (Auth::user()->lname == null))
@@ -32,7 +32,7 @@
                     @endif
 
                     <h4>Welcome <span class="text-muted">{{Auth::user()->fname}} {{Auth::user()->lname}}</span> !</h4>
-
+                    @include('displayform')
                 @endif
 
                 </div>
