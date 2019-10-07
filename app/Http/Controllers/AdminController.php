@@ -80,7 +80,6 @@ class AdminController extends Controller
         if($request->hasfile('img1')) 
         {
             $file = $request->file('img1');
-            //$file = $request->file('img1')->getClientOriginalName(); cause error 
             $extension = $file->getClientOriginalExtension(); // Get Image Ext.
             $filename = time() . "." . $extension;
             $file->move('uploads/employee/', $filename);   
@@ -113,10 +112,9 @@ class AdminController extends Controller
         if(Auth::user()->userid == 0)
         {
             $path = "home1";
+            return redirect()->action('HomeController@index');
         }
-        else{ $path = "admin"; }
-
-        return redirect()->route($path);
+        else{ $path = "admin"; return redirect()->action('AdminController@index'); }        
     }
 
     /**

@@ -29,13 +29,15 @@ class HomeController extends Controller
     {
         $ListServices = listservice::all();        
         
-        if(!empty($request->input('selectUser'))) 
-        {
+        if($request->has('btn1submit')) {
             $NameSearch = $request->input('selectUser');
-            $ServiceTable = service::where('services_name', $NameSearch)->first();
-            $Profiles = user::all();
-            
-            return view('home', compact('ListServices', 'ServiceTable', 'Profiles'));
+
+            if(!empty($request->input('selectUser'))) 
+            {                
+                $ServiceTable = service::where('services_name', $NameSearch)->get();
+                $Profiles = user::all();
+                return view('home', compact('ListServices', 'ServiceTable', 'Profiles'));
+            }
         }
         
         return view('home', compact('ListServices'));
@@ -43,12 +45,11 @@ class HomeController extends Controller
 
     public function update(Request $request)
     {
+        
         $Profile = User::findorFail($request->input('id'));
-
         if($request->hasfile('img1')) 
         {
-            $file = $request->file('img1');
-            //$file = $request->file('img1')->getClientOriginalName(); cause error 
+            $file = $request->file('img1');            
             $extension = $file->getClientOriginalExtension(); // Get Image Ext.
             $filename = time() . "." . $extension;
             $file->move('uploads/employee/', $filename);   
@@ -85,6 +86,5 @@ class HomeController extends Controller
     {        
         
     }
-
 
 }

@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="d-flex flex-row bd-highlight mb-3">
                 <div class="p-2 bd-highlight">
-                    <img src="{{ asset('uploads/employee/' . Auth::user()->image1) }}" alt="Image" height="150px" width="150px">
+                    <img src="{{ asset('uploads/employee/' . Auth::user()->image1) }}" alt="Image" height="110px" width="110px">
                 </div>
                 <div class="p-2 bd-highlight">
                     <label class="d-block p-2">
@@ -21,9 +21,10 @@
                 </div>
             </div>
             <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#viewprofileformServices-{{ Auth::user()->id }}"><i class="far fa-user"></i>VIEW FULL PROFILE</a>             
-            <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#editformProfile-{{ Auth::user()->id }}">EDIT PROFILE</a> 
+            <a href="{{ route('admin') }}" class="btn btn-primary" data-toggle="modal" data-target="#editformProfile-{{ Auth::user()->id }}">EDIT PROFILE</a>             
         </div> <!-- End Card Body -->
     </div> <!-- End Card -->
 </div> <!-- End Col-md-6 -->
+
 @include('Professional.modal.viewfullprofile-modal')
 @include('Professional.modal.editprofile-modal')
