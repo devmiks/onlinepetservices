@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -18,8 +21,13 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            if ( $request->email != null && $user->user_type > 0 ) {
+                return redirect()->route('admin');              
+            }else {
+                return redirect()->route('home1');  
+            }   
         }
+        
 
         return $next($request);
     }

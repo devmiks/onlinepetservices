@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Auth;
 use App\User;
 use App\service;
 use App\Listservice;
 use Illuminate\Http\Request;
+use DB;
 
 class SearchServiceController extends Controller
 {
@@ -19,14 +19,14 @@ class SearchServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $FieldSearch = $request->input('selectUser');
-        $SearchField = DB::table('services')
-                        ->join('users', 'services.userid', '=', 'users.id')
-                        ->select('services.userid', 'services.services_name', 'users.*')
-                        ->where('services_name', $FieldSearch);
-
-        dd($SearchField);
-        return view('Regular.searchprofessionalprofile', compact('FieldSearch','SearchField'));
+        $fieldSearch = $request->input('selectUser');
+        $serviceinfo = DB::table('services')->where('services.services_name', $fieldSearch)->first();
+        $searchprofile = DB::select('select distinct users.id, users.email, users.fname, users.mname, users.lname, 
+                                    users.homeaddress, users.mobilenum, users.image1 from services 
+                                    inner join users on services.userid = users.id 
+                                    where services_name = ?', array($fieldSearch));        
+         
+        return view('Regular.searchprofessionalprofile', compact('fieldSearch','serviceinfo', 'searchprofile'));
     }
 
     /**
@@ -36,7 +36,7 @@ class SearchServiceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

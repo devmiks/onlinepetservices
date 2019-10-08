@@ -69,6 +69,7 @@
                 <div class="top-right links">
                     @auth
                         @if(Auth::user()->userid == 0)
+                        {{Auth::user()->userid}}
                             <a href="{{ route('home1') }}">Home</a>                            
                         @else
                             <a href="{{ route('admin') }}">Home</a>

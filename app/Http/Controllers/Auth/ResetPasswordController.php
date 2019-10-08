@@ -29,10 +29,11 @@ class ResetPasswordController extends Controller
     //protected $redirectTo = '/home';
     protected function authenticated(Request $request, $user)
     {
-        if ( $request->email != null && $user->user_type == 0 ) {
-            return redirect()->route('home1');
-        }
-        return redirect()->route('admin');        
+        if ( $request->email != null && $user->user_type > 0 ) {
+            return redirect()->route('admin');              
+        }else {
+            return redirect()->route('home1');  
+        }      
     }
 
     /**

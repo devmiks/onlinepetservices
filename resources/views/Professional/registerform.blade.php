@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
         @csrf
         
         <input type="hidden" name="_method" value="put">
@@ -100,7 +100,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Register') }}
                 </button>
-                <a href="{{ route('home') }}" class="btn btn-danger">CANCEL</a>
+                <a href="{{ route('home1') }}" class="btn btn-danger">CANCEL</a>
             </div>
         </div>
     </form>

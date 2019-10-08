@@ -36,11 +36,11 @@ class HomeController extends Controller
             {                
                 $ServiceTable = service::where('services_name', $NameSearch)->get();
                 $Profiles = user::all();
-                return view('home', compact('ListServices', 'ServiceTable', 'Profiles'));
+                return view('home1', compact('ListServices', 'ServiceTable', 'Profiles'));
             }
         }
         
-        return view('home', compact('ListServices'));
+        return view('home1', compact('ListServices'));
     }
 
     public function update(Request $request)
@@ -54,8 +54,8 @@ class HomeController extends Controller
             $filename = time() . "." . $extension;
             $file->move('uploads/employee/', $filename);   
             if(is_null($request->input('oldpic')))
-            {
-
+            {   
+                
             } else {
                 
             }       
@@ -79,7 +79,7 @@ class HomeController extends Controller
 
         $Profile->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home1');
     }
 
     public function searchprofile(Request $search) 

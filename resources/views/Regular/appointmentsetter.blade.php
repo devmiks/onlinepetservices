@@ -14,7 +14,6 @@
                     @endforeach 
                 </select> 
                 <br />
-
                 <button type="submit" class="btn btn-primary">SEARCH</button>
             </form>             
             </div>
