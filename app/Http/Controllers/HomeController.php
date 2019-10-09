@@ -29,8 +29,10 @@ class HomeController extends Controller
     {
         $ListServices = listservice::all();        
         
-        if($request->has('btn1submit')) {
+        if(!empty($request->input('selectUser'))) 
+        {
             $NameSearch = $request->input('selectUser');
+<<<<<<< HEAD
 
             if(!empty($request->input('selectUser'))) 
             {                
@@ -38,6 +40,12 @@ class HomeController extends Controller
                 $Profiles = user::all();
                 return view('home1', compact('ListServices', 'ServiceTable', 'Profiles'));
             }
+=======
+            $ServiceTable = service::where('services_name', $NameSearch)->first();
+            $Profiles = user::all();
+            
+            return view('home', compact('ListServices', 'ServiceTable', 'Profiles'));
+>>>>>>> parent of dcfbeb1... update changes
         }
         
         return view('home1', compact('ListServices'));
@@ -45,11 +53,12 @@ class HomeController extends Controller
 
     public function update(Request $request)
     {
-        
         $Profile = User::findorFail($request->input('id'));
+
         if($request->hasfile('img1')) 
         {
-            $file = $request->file('img1');            
+            $file = $request->file('img1');
+            //$file = $request->file('img1')->getClientOriginalName(); cause error 
             $extension = $file->getClientOriginalExtension(); // Get Image Ext.
             $filename = time() . "." . $extension;
             $file->move('uploads/employee/', $filename);   
@@ -86,5 +95,6 @@ class HomeController extends Controller
     {        
         
     }
+
 
 }
